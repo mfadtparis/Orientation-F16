@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>fullPage.js One Page Scroll</title>
+	<link rel="stylesheet" type="text/css" href="css/jquery.fullPage.css" />
+	<link rel="stylesheet" type="text/css" href="css/main.css" />
+	
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="js/jquery.fullPage.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#fullpage').fullpage({
+				sectionsColor: ['#ffffff', '#ffffff', '#7BAABE', '#ccddff' ],
+				anchors: ['start-info', 'about-info', 'service-info', 'actual-info', 'contact-info'],
+				menu: '#menu',
+				scrollingSpeed: 2000
+			});
+
+		});
+	</script>
+
+
+	<style>
+		#section0{
+			background-image: url(images/cat_plate_1.jpg); 
+			background-position: center center;
+		}
+	</style>
+
+	
+
+</head>
+
+<body>
+
+	<div id="fullpage">
+	
+	<div class="section active" id="section0">
+		<h1>My Collection</h1>
+		 <input type="hidden" name="id" value="1" />
+		<p>You're gonna love it.</p>
+	</div>
+	<div class="section" id="section1" >
+		<div class="slide">
+			<div class="intro">
+				<img src="images/cat_plate_2.jpg" alt="" />
+			</div>
+		</div>
+		<div class="slide">
+			<div class="intro">
+				<img src="images/cat_plate_1.jpg" alt="" />
+			</div>
+		</div>
+		<div class="slide">
+			<div class="intro">
+				<img src="images/cat_plate_4.jpg" alt="" />
+			</div>
+		</div>
+		<div class="slide">
+			<div class="intro">
+				<img src="images/cat_plate_3.png" alt="" />
+			</div>
+		</div>
+	</div>
+	<div class="section" id="section2">
+		<div class="intro" >
+			<h1>meow</h1>
+			<p>Show your appreciation of this sophisticated animal with image plate 65.</p>			
+		</div>
+	</div>
+	<div class="section" id="section3">
+		<div class="intro">
+			<img class="rotate" src="images/cat_plate_3.png" style="max-width:75%; max-height:75%" />
+		</div>
+	</div>
+	
+	
+
+</div>
+
+</body>
+</html>
+
+	

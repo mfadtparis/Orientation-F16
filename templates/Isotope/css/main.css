@@ -1,0 +1,60 @@
+html,body,div,p{
+	margin: 0;
+	padding: 0;
+}
+
+html{
+	font-family: sans-serif;	
+}
+
+#container{
+	float: left;
+	width: 80%;
+}
+
+button{
+	border: 1px solid lightgray;
+	background-color: white;
+	width: 90%;
+	text-align: left;
+}
+
+.checked{
+	background-color: ghostwhite;
+}
+
+#filters{
+	float: left;
+	width: 19%;
+	margin-bottom: 10px;
+	padding-left: 1%;
+}
+
+#filters h2{
+	display: inline-block;
+	font-size: .8em;
+	padding: 0;
+	margin: 5px 0 0 0;
+}
+
+.item{
+	float: left;
+	width: 33.333%;
+}
+
+.item img {
+  display: block;
+  width: 100%;
+}
+
+.item:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.grid-sizer{
+	width: 33.333%;
+}
+
+

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <title>Leap</title>
+    
+    <link rel="stylesheet" type="text/css" href="css/jquery.fullPage.css" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    
+
+    <style>
+    .slide{
+      background-position:center center; 
+      background-repeat:no-repeat;
+    }
+    #slide1 {
+      background-image:url('images/1.jpg');
+    }
+    #slide2 {
+      background-image:url('images/2.jpg');
+    }
+    #slide3 {
+      background-image:url('images/3.jpg');
+    } 
+    </style>
+</head>
+
+<body>
+    <div id="fullpage">
+      <div class="section active" id="section0">
+        
+        <div class="slide leapImage" id="slide1"></div>
+
+        <div class="slide leapImage" id="slide2"></div>
+        
+        <div class="slide leapImage" id="slide3"></div>
+
+      </div>
+
+    </div>
+
+
+    <script type="text/javascript" src="js/leap-0.6.4.js"></script>
+    <script type="text/javascript" src="js/leap-plugins-0.1.6.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/jquery.fullPage.js"></script>
+
+    <script type="text/javascript">
+    
+    var pct = 100;
+    var tPct = 100;
+    var controllerOptions;
+
+    $('#fullpage').fullpage({
+        sectionsColor: ['#fff'],
+        scrollingSpeed: 1000
+    });
+
+   
+    window.requestAnimFrame = (function(){
+      return  window.requestAnimationFrame       ||
+          window.webkitRequestAnimationFrame ||
+          window.mozRequestAnimationFrame    ||
+          function( callback ){
+            window.setTimeout(callback, 1000 / 60);
+          };
+    })();
+
+    (function animloop(){
+
+      pct = .9*pct + .1*tPct;
+      var cssPct = pct.toFixed(0) + "% auto";
+      $(".slide").css('background-size',cssPct);
+      
+      requestAnimFrame(animloop);
+    })();
+
+    
+    Leap.loop(controllerOptions, 
+    {   
+        
+        frame: function(frame){
+            
+            var hand = frame.hands[0];
+            
+            if (hand){
+                screenPosition = hand.screenPosition(hand.palmPosition);
+                //console.log(screenPosition);
+
+                //tPct = map_range(screenPosition[2],900,-800,10,400);
+                tPct = map_range(screenPosition[1],0,-2000,50,500);
+
+            }
+            
+            if(frame.valid && frame.gestures.length > 0){
+                frame.gestures.forEach(function(gesture){
+                    switch (gesture.type){
+                      case "circle":
+                          //console.log("Circle Gesture " + gesture.state);
+
+                          break;
+                      case "keyTap":
+                          //console.log("Key Tap Gesture");
+
+                          break;
+                      case "screenTap":
+                          //console.log("Screen Tap Gesture");
+                          break;
+                      case "swipe":
+                          
+                          if(gesture.state == "stop"){
+                            $.fn.fullpage.moveSlideRight();
+                            console.log("Swipe Gesture");
+                          }
+                          break;
+                    } 
+                });
+              }
+
+          
+        }
+    }).use('screenPosition', {scale:1.0});
+
+  function map_range(value, low1, high1, low2, high2) {
+    return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
+  }
+
+  </script>
+
+</body>
+
+</html>
