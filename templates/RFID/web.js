@@ -1,9 +1,9 @@
 // LIST ALL FUNCTION FOR ALL CARDS
 var allCards = [];
-allCards["  9E 10 A4 00"] =	function(){$('body').css({'background-color':'tomato'});}
-allCards["  2F 9C 92 00"] = function(){$('body').css({'background-color':'skyblue'});}
+allCards["100"] =	function(){ $.fn.fullpage.moveTo('2');}
+allCards["101"] = function(){$.fn.fullpage.moveTo('3');}
 
-var connection = new WebSocket('ws://localhost:1337');
+var connection = new WebSocket('ws://localhost:1338');
 
 connection.onopen = function(){
     console.log("open connection");
@@ -20,6 +20,7 @@ connection.onmessage = function(message){
    if(allCards[cardID]!=undefined){
      allCards[cardID]();
    }
+   console.log(cardID);
 }
 
 connection.onerror = function(error){

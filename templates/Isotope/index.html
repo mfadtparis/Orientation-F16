@@ -13,19 +13,11 @@
     
     <div id="main">
         <div id="filters">
-            <div class="option-set" data-filter-group="color">
-            <h2>color</h2>
+            <div class="option-set" data-filter-group="politics">
+            <h2>politics</h2>
             <button data-isotope-value="" class="checked">all</button>
-            <button data-isotope-value=".gray">gray</button>
-            <button data-isotope-value=".orange">orange</button>
-            <button data-isotope-value=".white">white</button>
-            </div>
-
-            <div class="option-set" data-filter-group="age">
-            <h2>age</h2>
-            <button data-isotope-value="" class="checked">all</button>
-            <button data-isotope-value=".kitten">kitten</button>
-            <button data-isotope-value=".adult">adult</button>
+            <button data-isotope-value=".republican">republican</button>
+            <button data-isotope-value=".democrat">democrat</button>
             </div>
 
             <div class="option-set" data-filter-group="emotion">
@@ -40,16 +32,16 @@
         <div id="container" class="">
             <div class="grid-sizer"></div>
 
-            <div class="item gray kitten disappoint"><img src="images/cat_0.jpg"/></div>
-            <div class="item white adult outdoors noshit"><img src="images/cat_1.jpg"/></div>
-            <div class="item orange adult outdoors demise"><img src="images/cat_2.jpg"/></div>
-            <div class="item gray adult disappoint"><img src="images/cat_3.jpg"/></div>
-            <div class="item gray kitten demise"><img src="images/cat_4.jpg"/></div>
-            <div class="item gray adult disappoint"><img src="images/cat_5.jpg"/></div>
-            <div class="item gray kitten noshit"><img src="images/cat_6.jpg"/></div>
-            <div class="item gray adult outdoors noshit"><img src="images/cat_7.jpg"/></div>
-            <div class="item adult outdoors demise"><img src="images/cat_8.jpg"/></div>
-            <div class="item orange kitten demise"><img src="images/cat_9.jpg"/></div>
+            <div class="item  republican disappoint"><img src="images/cat_0.jpg"/></div>
+            <div class="item  democrat  noshit"><img src="images/cat_1.jpg"/></div>
+            <div class="item  republican  demise"><img src="images/cat_2.jpg"/></div>
+            <div class="item  democrat disappoint"><img src="images/cat_3.jpg"/></div>
+            <div class="item  democrat demise"><img src="images/cat_4.jpg"/></div>
+            <div class="item  republican disappoint"><img src="images/cat_5.jpg"/></div>
+            <div class="item  republican noshit"><img src="images/cat_6.jpg"/></div>
+            <div class="item  democrat  noshit"><img src="images/cat_7.jpg"/></div>
+            <div class="item  republican  demise"><img src="images/cat_8.jpg"/></div>
+            <div class="item  republican demise"><img src="images/cat_9.jpg"/></div>
         </div>    
     </div>
 
@@ -64,9 +56,14 @@
     var $iso = $('#container').isotope({
         itemSelector: '.item',
         percentPosition: true,
+        // masonry: {
+        //     columnWidth: '.grid-sizer'
+        // }
         masonry: {
-            columnWidth: '.grid-sizer'
+            columnWidth: 0,
+            gutter: 10
         }
+    
     });
 
     $iso.imagesLoaded().progress( function() {
