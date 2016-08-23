@@ -3,7 +3,7 @@ var allCards = [];
 allCards["100"] =	function(){ $.fn.fullpage.moveTo('2');}
 allCards["101"] = function(){$.fn.fullpage.moveTo('3');}
 
-var connection = new WebSocket('ws://localhost:1338');
+var connection = new WebSocket('ws://localhost:1339');
 
 connection.onopen = function(){
     console.log("open connection");

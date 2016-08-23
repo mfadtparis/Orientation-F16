@@ -16,8 +16,8 @@
             <div class="option-set" data-filter-group="politics">
             <h2>politics</h2>
             <button data-isotope-value="" class="checked">all</button>
-            <button data-isotope-value=".republican">republican</button>
-            <button data-isotope-value=".democrat">democrat</button>
+            <button data-isotope-value=".republican">conservative</button>
+            <button data-isotope-value=".democrat">liberal</button>
             </div>
 
             <div class="option-set" data-filter-group="emotion">
@@ -27,21 +27,29 @@
             <button data-isotope-value=".noshit">doesn't give a shit</button>
             <button data-isotope-value=".disappoint">disappointed in you</button>
             </div>
+
+            <div class="button-group sort-by-button-group">
+             <h2>sort by</h2>
+             <button data-sort-by="original-order">original order</button>
+             <button data-sort-by="likes">most liked</button>
+             <button data-sort-by="danger">most dangerous</button>
+            </div>
+         </div>
         </div>
 
         <div id="container" class="">
             <div class="grid-sizer"></div>
 
-            <div class="item  republican disappoint"><img src="images/cat_0.jpg"/></div>
-            <div class="item  democrat  noshit"><img src="images/cat_1.jpg"/></div>
-            <div class="item  republican  demise"><img src="images/cat_2.jpg"/></div>
-            <div class="item  democrat disappoint"><img src="images/cat_3.jpg"/></div>
-            <div class="item  democrat demise"><img src="images/cat_4.jpg"/></div>
-            <div class="item  republican disappoint"><img src="images/cat_5.jpg"/></div>
-            <div class="item  republican noshit"><img src="images/cat_6.jpg"/></div>
-            <div class="item  democrat  noshit"><img src="images/cat_7.jpg"/></div>
-            <div class="item  republican  demise"><img src="images/cat_8.jpg"/></div>
-            <div class="item  republican demise"><img src="images/cat_9.jpg"/></div>
+            <div class="item republican disappoint" data-likes='1' data-danger='12'><img src="images/cat_0.jpg"/></div>
+            <div class="item democrat  noshit" data-likes='10'  data-danger='1'><img src="images/cat_1.jpg"/></div>
+            <div class="item republican  demise" data-likes='4'  data-danger='7'><img src="images/cat_2.jpg"/></div>
+            <div class="item democrat disappoint" data-likes='21'  data-danger='2'><img src="images/cat_3.jpg"/></div>
+            <div class="item democrat demise" data-likes='0'  data-danger='6'><img src="images/cat_4.jpg"/></div>
+            <div class="item republican disappoint" data-likes='15'  data-danger='4'><img src="images/cat_5.jpg"/></div>
+            <div class="item republican noshit" data-likes='3'  data-danger='8'><img src="images/cat_6.jpg"/></div>
+            <div class="item democrat  noshit" data-likes='19'  data-danger='3'><img src="images/cat_7.jpg"/></div>
+            <div class="item republican  demise" data-likes='100'  data-danger='11'><img src="images/cat_8.jpg"/></div>
+            <div class="item republican demise" data-likes='11'  data-danger='10'><img src="images/cat_9.jpg"/></div>
         </div>    
     </div>
 
@@ -56,23 +64,31 @@
     var $iso = $('#container').isotope({
         itemSelector: '.item',
         percentPosition: true,
-        // masonry: {
-        //     columnWidth: '.grid-sizer'
-        // }
         masonry: {
             columnWidth: 0,
             gutter: 10
-        }
-    
+        },
+        getSortData: {
+            likes: '[data-likes]',
+            danger: '[data-danger]'
+        }    
     });
 
     $iso.imagesLoaded().progress( function() {
         $iso.isotope('layout');
     });
 
-    $('button').on( 'click', function() {
+    $('.sort-by-button-group').on( 'click', 'button', function() {
+        var sortByValue = $(this).attr('data-sort-by');
+        $iso.isotope({ sortBy: sortByValue });
+        $(this).siblings('button').removeClass("checked");
+        $(this).addClass("checked");
+    });
 
-      var group = $(this).parents('.option-set').attr('data-filter-group');
+    $('.option-set').on( 'click', 'button', function() {
+        //var sortByValue = $(this).attr('data-sort-by');
+        //$grid.isotope({ sortBy: sortByValue });
+        var group = $(this).parents('.option-set').attr('data-filter-group');
       var value = $(this).attr('data-isotope-value');
 
       filters[ group ] = value;
@@ -82,8 +98,22 @@
 
       $(this).siblings('button').removeClass("checked");
       $(this).addClass("checked");
-
     });
+
+    // $('button').on( 'click', function() {
+
+    //   var group = $(this).parents('.option-set').attr('data-filter-group');
+    //   var value = $(this).attr('data-isotope-value');
+
+    //   filters[ group ] = value;
+    //   var filterValue = concatValues( filters );
+
+    //   $iso.isotope({ filter: filterValue });
+
+    //   $(this).siblings('button').removeClass("checked");
+    //   $(this).addClass("checked");
+
+    // });
 
     
 
