@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	
+	<head>
+		<title>Gifs</title>
+		<style>
+			html,body,div{
+				padding: 0;
+				margin: 0;	
+			}
+			
+			.col{
+				width:50%; 
+				height: 100vh; 
+				float: left;
+			}
+			.vcontainer{
+    			display: flex;
+    			align-items: center;
+    			justify-content: center;
+    			height: 100%;
+    		}
+    		.container{
+    			position: relative;
+    		}
+    		.overlay{
+    			position: absolute;
+    			top: 0;
+    			left: 0;
+    		}
+
+		</style>
+
+	</head>
+	
+	<body>
+		<div class="col">
+			<div class="vcontainer">
+				<img src="gifs/cat.gif" />
+			</div>
+		</div>
+
+		<div class="col">
+			<div class="vcontainer">
+				
+				<div class="container">
+					<img src="gifs/cat2.gif" />
+					<div class="overlay">
+						<img src="gifs/sparkle.gif" />
+					</div>
+				</div>
+
+			</div>
+		</div>
+		
+	</body>
+
+</html>

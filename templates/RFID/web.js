@@ -1,9 +1,10 @@
 // LIST ALL FUNCTION FOR ALL CARDS
 var allCards = [];
-allCards["100"] =	function(){ $.fn.fullpage.moveTo('2');}
+
+allCards["100"] =	function(){ $.fn.fullpage.moveTo('2');  }
 allCards["101"] = function(){$.fn.fullpage.moveTo('3');}
 
-var connection = new WebSocket('ws://localhost:1339');
+var connection = new WebSocket('ws://localhost:1333');
 
 connection.onopen = function(){
     console.log("open connection");
